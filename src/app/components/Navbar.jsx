@@ -1,4 +1,4 @@
-import Link from "next/link";
+import NavLink from "./NavLink";
 
 const navLinks = [
     {
@@ -42,7 +42,13 @@ const Navbar = () => {
                 {
                     navLinks.map(({ path, title }) =>
                         <li key={path}>
-                            <Link href={path}>{title}</Link>
+                            <NavLink
+                                exact={path === '/'}
+                                activeClassName="text-red-500 py-1 border border-y-2 border-x-0"
+                                href={path}
+                            >
+                                {title}
+                            </NavLink>
                         </li>)
                 }
             </ul>

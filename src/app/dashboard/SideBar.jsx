@@ -1,16 +1,16 @@
-import Link from "next/link";
+import NavLink from "../components/NavLink";
 
 const navlink = [
     {
         path: '/dashboard',
-        title: 'Home'
+        title: 'Profile'
     },
     {
-        path: '/additem',
+        path: '/dashboard/additem',
         title: 'Add Item'
     },
     {
-        path: '/manageitem',
+        path: '/dashboard/manageitem',
         title: 'Manage Item'
     },
     {
@@ -25,7 +25,13 @@ const SideBar = () => {
             <ul className="ml-4 mt-6">
                 {
                     navlink.map(({ path, title }) => <li key={path}>
-                        <Link href={path}>{title}</Link>
+                        <NavLink
+                            exact={path === '/dashboard' || '/'}
+                            activeClassName="text-red-500 px-1 border border-y-0 border-x-2"
+                            href={path}
+                        >
+                            {title}
+                        </NavLink>
                     </li>)
                 }
             </ul>
